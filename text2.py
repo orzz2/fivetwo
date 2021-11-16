@@ -29,7 +29,9 @@ options.add_argument('user-agent="Mozilla/5.0 (iPod; U; CPU iPhone OS 2_1 like M
 #   options.add_argument('proxy-server=' + proxy)
 # if user_agent:
 #   options.add_argument('user-agent=' + user_agent)
- 
+
+options = DesiredCapabilities.CHROME
+options['loggingPrefs'] = {'performance': 'ALL'}
 browser = webdriver.Chrome(chrome_options=options)# 创建浏览器对象
 browser.get('http://www.baidu.com')
 
