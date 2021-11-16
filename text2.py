@@ -33,8 +33,7 @@ options.add_argument('user-agent="Mozilla/5.0 (iPod; U; CPU iPhone OS 2_1 like M
 d = DesiredCapabilities.CHROME
 d['loggingPrefs'] = {'performance': 'ALL'}
 
-String scriptToExecute = "var performance = window.performance || window.mozPerformance || window.msPerformance || window.webkitPerformance || {}; var network = performance.getEntries() || {}; return network;";
-String netData = ((JavascriptExecutor)driver).executeScript(scriptToExecute).toString();
+
 
 browser = webdriver.Chrome(desired_capabilities=d , chrome_options=options)# 创建浏览器对象
 # browser = webdriver.Chrome(desired_capabilities=d)
