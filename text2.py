@@ -26,7 +26,8 @@ options.add_argument('user-agent="Mozilla/5.0 (iPod; U; CPU iPhone OS 2_1 like M
 #   options.add_argument('user-agent=' + user_agent)
 
 d = DesiredCapabilities.CHROME
-d['loggingPrefs'] = {'performance': 'ALL'}
+# d['loggingPrefs'] = {'performance': 'ALL'}
+d["goog:loggingPrefs"] = {'performance': 'ALL'}
 
 #-----------------------------
 
