@@ -22,6 +22,8 @@ jobs:
           python-version: 'pypy-3.7'
           architecture: 'x64'
 
+      - name: 'Run Pip' 
+        run: pip3 install selenium
         
       - name: 'Run baiduPush.sh' # 步骤二，执行sh命令文件
         run: python3 text2.py  # 运行命令。（注意，运行目录是仓库根目录）
