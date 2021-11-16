@@ -2,17 +2,6 @@ from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.chrome.options import Options
 
-# chrome_options = Options()
-# chrome_options.add_argument('--headless')
-# chrome_options.add_argument('--disable-gpu')
-# chrome_options.add_argument("window-size=1000,800")
-# chrome_options.add_argument("--no-sandbox")
-# d = DesiredCapabilities.CHROME
-# d['loggingPrefs'] = {'browser': 'ALL'}
-# driver = webdriver.Chrome(chrome_options=chrome_options) # 创建浏览器对象
-# driver.get('http://www.baidu.com')
-
-
 
 # 进入浏览器设置
 options = webdriver.ChromeOptions()
@@ -33,7 +22,25 @@ options.add_argument('user-agent="Mozilla/5.0 (iPod; U; CPU iPhone OS 2_1 like M
 d = DesiredCapabilities.CHROME
 d['loggingPrefs'] = {'performance': 'ALL'}
 
+#-----------------------------
+# 初始化驱动程序：
+perfLogPrefs =ChromePerformanceLoggingPreferences();
+perfLogPrefs.AddTracingCategories({ "devtools.network", "devtools.timeline" });
+options.PerformanceLoggingPreferences = perfLogPrefs;
+options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
+options.SetLoggingPreference("performance", LogLevel.All);
+# var perfLogPrefs = new ChromePerformanceLoggingPreferences();
+# perfLogPrefs.AddTracingCategories(new string[] { "devtools.network", "devtools.timeline" });
+# options.PerformanceLoggingPreferences = perfLogPrefs;
+# options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
+# options.SetLoggingPreference("performance", LogLevel.All);
 
+print('line 38')
+# driver = new ChromeDriver(ConfigManager.ChromeDriverPath, options);
+# ScenarioDefinitions.PathToGoogleCustomProfile = string.Empty;
+# 从日志获取数据：
+# var data = driver.Manage().Logs.GetLog("performance");
+#-----------------------------
 
 browser = webdriver.Chrome(desired_capabilities=d , chrome_options=options)# 创建浏览器对象
 # browser = webdriver.Chrome(desired_capabilities=d)
@@ -56,14 +63,5 @@ print('-------------------下面是log-----------------------')
 print(netData)
   
   
-# System.setProperty("webdriver.chrome.driver","D://ECLIPSE-WORKSPACE//Selenium-Demo//src//main//resources//drivers//chromedriver-2.35.exe");
-#         ChromeOptions options = new ChromeOptions();
-#         options.addArguments("start-maximized"); #启动Google Chrome就最大化
-#         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-#         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-#         WebDriver driver = new ChromeDriver(capabilities);
-#         driver.get("http://www.google.com");
-#         String scriptToExecute = "var performance = window.performance || window.mozPerformance || window.msPerformance || window.webkitPerformance || {}; var network = performance.getEntries() || {}; return network;";
-#         String netData = ((JavascriptExecutor)driver).executeScript(scriptToExecute).toString();
-#         System.out.println(netData);
+
 print('-------------------this is end-----------------------')  
