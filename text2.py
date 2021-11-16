@@ -44,7 +44,7 @@ for i in logs:
 #         if log['message']['params']['response']['mimeType'] == 'document':
 #         if log['message']['params']['response']['mimeType'] == 'audio/mp4':
 #         if '.js' not in log['message']['params']['response']['url']:
-        print(log['message']['params']['response']['mimeType']+"!@!@!@!@'+log['message']['params']['response']['url'])
+        print(str(log['message']['params']['response']['mimeType'])+"!@!@!@!@'+str(log['message']['params']['response']['url']))
 
 
 
