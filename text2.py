@@ -25,10 +25,10 @@ options.add_argument('lang=zh_CN.UTF-8')
 # 更换头部
 options.add_argument('user-agent="Mozilla/5.0 (iPod; U; CPU iPhone OS 2_1 like Mac OS X; ja-jp) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5F137 Safari/525.20"')
 #设置代理
-if proxy:
-  options.add_argument('proxy-server=' + proxy)
-if user_agent:
-  options.add_argument('user-agent=' + user_agent)
+# if proxy:
+#   options.add_argument('proxy-server=' + proxy)
+# if user_agent:
+#   options.add_argument('user-agent=' + user_agent)
  
 browser = webdriver.Chrome(chrome_options=options)# 创建浏览器对象
 driver.get('http://www.baidu.com')
