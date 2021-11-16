@@ -34,11 +34,14 @@ browser = webdriver.Chrome(chrome_options=options)# 创建浏览器对象
 browser.get('http://www.baidu.com')
 
 
-eles = browser.find_elements_by_xpath("//*[@href]")
-for ele in eles:
-   print(ele.href)
-   print(ele.text)
+# eles = browser.find_elements_by_xpath("//*[@href]")
+# for ele in eles:
+#    print(ele.href)
+#    print(ele.text)
   
+for entry in browser.get_log('performance'):
+    print(entry)
+ 
   
 print(browser.title)
 print('无头浏览器启动成功')
