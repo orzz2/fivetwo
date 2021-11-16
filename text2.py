@@ -16,5 +16,13 @@ options.add_argument('user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) Appl
 
 driver = webdriver.Chrome(chrome_options=chrome_options) # 创建浏览器对象
 driver.get('http://www.baidu.com')
+
+
+eles = driver.get_elements_by_xpath("//*[@href]")
+for ele in eles:
+   print(ele.href)
+   print(ele.text)
+  
+  
 print(driver.title)
 print('无头浏览器启动成功')
