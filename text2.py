@@ -42,9 +42,11 @@ browser.get('http://www.baidu.com')
 #    print(ele.href)
 #    print(ele.text)
   
-# for entry in browser.get_log('performance'):
-#     print(entry)
+
  
 print('-------------------开始print了！-----------------------')  
 print(browser.title)
 print('无头浏览器启动成功')
+print('-------------------下面是log-----------------------')  
+# for entry in browser.get_log('performance'):
+#     print(entry)
