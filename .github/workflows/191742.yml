@@ -24,10 +24,10 @@ jobs:
 
       - name: 'Run Pip1' 
         run: pip3 install selenium
-      - name: 'Run Pip2' 
-        run: pip3 install json
-      - name: 'Run Pip3' 
-        run: pip3 install time
+#       - name: 'Run Pip2' 
+#         run: pip3 install json
+#       - name: 'Run Pip3' 
+#         run: pip3 install time
 
         
       - name: 'Run baiduPush.sh' # 步骤二，执行sh命令文件
