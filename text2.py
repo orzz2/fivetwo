@@ -6,8 +6,6 @@ from selenium.webdriver.chrome.options import Options
 # 进入浏览器设置
 options = webdriver.ChromeOptions()
 #----------------
-
-
 options.add_argument('--log-level=3')
 # options.add_argument('--mute-audio')
 #---------------
@@ -26,36 +24,29 @@ options.add_argument('user-agent="Mozilla/5.0 (iPod; U; CPU iPhone OS 2_1 like M
 #   options.add_argument('user-agent=' + user_agent)
 
 d = DesiredCapabilities.CHROME
-# d['loggingPrefs'] = {'performance': 'ALL'}
-d["goog:loggingPrefs"] = {'performance': 'ALL'}
-
-#-----------------------------
-
-#-----------------------------
+d["goog:loggingPrefs"] = {'performance': 'ALL'}#打开日志记录
 
 browser = webdriver.Chrome(desired_capabilities=d , chrome_options=options)# 创建浏览器对象
 # browser = webdriver.Chrome(desired_capabilities=d)
 browser.get('http://www.baidu.com')
 
-
-# eles = browser.find_elements_by_xpath("//*[@href]")
-# for ele in eles:
-#    print(ele.href)
-#    print(ele.text)
 #----------------------------
 import json
 import time
 time.sleep(5)
-logs = browser.get_log('performance')
+logs = browser.get_log('performance')#输出日志
 
+
+print('------------------开始输出日志嘞----------------------')
 for i in logs:
     log = json.loads(i['message'])
     if log['message']['method'] == 'Network.responseReceived':
+        if log['message']['params']['response']['mimeType'] == 'document':
 #         if log['message']['params']['response']['mimeType'] == 'audio/mp4':
+#         if '.js' not in log['message']['params']['response']['url']:
         print(log['message']['params']['response']['url'])
-#         addresses.append(log['message']['params']['response']['url'])
-# check = set([i.split('/')[-1] for i in addresses])
-#---------------------------
+
+
 
  
 print('-------------------开始print了！-----------------------')  
