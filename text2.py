@@ -23,23 +23,7 @@ d = DesiredCapabilities.CHROME
 d['loggingPrefs'] = {'performance': 'ALL'}
 
 #-----------------------------
-# 初始化驱动程序：
-perfLogPrefs =ChromePerformanceLoggingPreferences();
-perfLogPrefs.AddTracingCategories({ "devtools.network", "devtools.timeline" });
-options.PerformanceLoggingPreferences = perfLogPrefs;
-options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
-options.SetLoggingPreference("performance", LogLevel.All);
-# var perfLogPrefs = new ChromePerformanceLoggingPreferences();
-# perfLogPrefs.AddTracingCategories(new string[] { "devtools.network", "devtools.timeline" });
-# options.PerformanceLoggingPreferences = perfLogPrefs;
-# options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
-# options.SetLoggingPreference("performance", LogLevel.All);
 
-print('line 38')
-# driver = new ChromeDriver(ConfigManager.ChromeDriverPath, options);
-# ScenarioDefinitions.PathToGoogleCustomProfile = string.Empty;
-# 从日志获取数据：
-# var data = driver.Manage().Logs.GetLog("performance");
 #-----------------------------
 
 browser = webdriver.Chrome(desired_capabilities=d , chrome_options=options)# 创建浏览器对象
@@ -51,7 +35,20 @@ browser.get('http://www.baidu.com')
 # for ele in eles:
 #    print(ele.href)
 #    print(ele.text)
-  
+#----------------------------
+import json
+import time
+time.sleep(5)
+logs = browser.get_log('performance')
+
+for i in logs:
+    log = json.loads(i['message'])
+    if log['message']['method'] == 'Network.responseReceived':
+#         if log['message']['params']['response']['mimeType'] == 'audio/mp4':
+        print(log['message']['params']['response']['url'])
+#         addresses.append(log['message']['params']['response']['url'])
+# check = set([i.split('/')[-1] for i in addresses])
+#---------------------------
 
  
 print('-------------------开始print了！-----------------------')  
@@ -60,7 +57,7 @@ print('无头浏览器启动成功')
 print('-------------------下面是log-----------------------')  
 # for entry in browser.get_log('performance'):
 #     print(entry)
-print(netData)
+
   
   
 
