@@ -41,10 +41,10 @@ print('------------------开始输出日志嘞----------------------')
 for i in logs:
     log = json.loads(i['message'])
     if log['message']['method'] == 'Network.responseReceived':
-#         if log['message']['params']['response']['mimeType'] == 'document':
-#         if log['message']['params']['response']['mimeType'] == 'audio/mp4':
+        if log['message']['params']['response']['mimeType'] == 'text/html':
+#         if log['message']['params']['response']['mimeType'] == 'audio/mp4':#####text/html|image/png|text/javascript|text/plain|application/x-javascript
 #         if '.js' not in log['message']['params']['response']['url']:
-        print(str(log['message']['params']['response']['mimeType'])+"!@!@!@!@"+str(log['message']['params']['response']['url']))
+            print(str(log['message']['params']['response']['mimeType'])+"!@!@!@!@"+str(log['message']['params']['response']['url']))
 
 
 
