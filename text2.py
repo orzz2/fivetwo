@@ -34,7 +34,7 @@ browser = webdriver.Chrome(chrome_options=options)# 创建浏览器对象
 browser.get('http://www.baidu.com')
 
 
-eles = browser.get_elements_by_xpath("//*[@href]")
+eles = browser.find_elements_by_xpath("//*[@href]")
 for ele in eles:
    print(ele.href)
    print(ele.text)
