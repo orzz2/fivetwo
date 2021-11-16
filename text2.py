@@ -30,8 +30,8 @@ options.add_argument('user-agent="Mozilla/5.0 (iPod; U; CPU iPhone OS 2_1 like M
 # if user_agent:
 #   options.add_argument('user-agent=' + user_agent)
 
-options = DesiredCapabilities.CHROME
-options['loggingPrefs'] = {'performance': 'ALL'}
+# options = DesiredCapabilities.CHROME
+# options['loggingPrefs'] = {'performance': 'ALL'}
 browser = webdriver.Chrome(chrome_options=options)# 创建浏览器对象
 browser.get('http://www.baidu.com')
 
@@ -41,8 +41,8 @@ browser.get('http://www.baidu.com')
 #    print(ele.href)
 #    print(ele.text)
   
-for entry in browser.get_log('performance'):
-    print(entry)
+# for entry in browser.get_log('performance'):
+#     print(entry)
  
   
 print(browser.title)
