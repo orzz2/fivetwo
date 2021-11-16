@@ -12,7 +12,6 @@ jobs:
       - name: 'Checkout codes' # 步骤一，获取仓库代码
         uses: actions/checkout@v1
       - name: 'Run baiduPush.sh' # 步骤二，执行sh命令文件
-      
         run: |
           sudo apt-get install libxss1 libappindicator1 libindicator7
           wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb ##下载chrome安装包
@@ -30,6 +29,8 @@ jobs:
           sudo mv -f chromedriver /usr/local/share/chromedriver
           sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
           sudo ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
+      - name: 'get python' 
+        run: |
           ##安装python依赖
           pip3 install selenium
           pip3 install pyvirtualdisplay
