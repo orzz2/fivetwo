@@ -32,6 +32,10 @@ options.add_argument('user-agent="Mozilla/5.0 (iPod; U; CPU iPhone OS 2_1 like M
 
 d = DesiredCapabilities.CHROME
 d['loggingPrefs'] = {'performance': 'ALL'}
+
+String scriptToExecute = "var performance = window.performance || window.mozPerformance || window.msPerformance || window.webkitPerformance || {}; var network = performance.getEntries() || {}; return network;";
+String netData = ((JavascriptExecutor)driver).executeScript(scriptToExecute).toString();
+
 browser = webdriver.Chrome(desired_capabilities=d , chrome_options=options)# 创建浏览器对象
 # browser = webdriver.Chrome(desired_capabilities=d)
 browser.get('http://www.baidu.com')
@@ -50,5 +54,17 @@ print('无头浏览器启动成功')
 print('-------------------下面是log-----------------------')  
 # for entry in browser.get_log('performance'):
 #     print(entry)
-    
+print(netData)
+  
+  
+# System.setProperty("webdriver.chrome.driver","D://ECLIPSE-WORKSPACE//Selenium-Demo//src//main//resources//drivers//chromedriver-2.35.exe");
+#         ChromeOptions options = new ChromeOptions();
+#         options.addArguments("start-maximized"); #启动Google Chrome就最大化
+#         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+#         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+#         WebDriver driver = new ChromeDriver(capabilities);
+#         driver.get("http://www.google.com");
+#         String scriptToExecute = "var performance = window.performance || window.mozPerformance || window.msPerformance || window.webkitPerformance || {}; var network = performance.getEntries() || {}; return network;";
+#         String netData = ((JavascriptExecutor)driver).executeScript(scriptToExecute).toString();
+#         System.out.println(netData);
 print('-------------------this is end-----------------------')  
