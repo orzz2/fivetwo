@@ -5,6 +5,12 @@ from selenium.webdriver.chrome.options import Options
 
 # 进入浏览器设置
 options = webdriver.ChromeOptions()
+#----------------
+
+
+options.add_argument('--log-level=3')
+# options.add_argument('--mute-audio')
+#---------------
 #谷歌无头模式
 options.add_argument('--headless')
 options.add_argument('--disable-gpu')
