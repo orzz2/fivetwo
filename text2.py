@@ -31,7 +31,7 @@ options.add_argument('user-agent="Mozilla/5.0 (iPod; U; CPU iPhone OS 2_1 like M
 #   options.add_argument('user-agent=' + user_agent)
  
 browser = webdriver.Chrome(chrome_options=options)# 创建浏览器对象
-driver.get('http://www.baidu.com')
+browser.get('http://www.baidu.com')
 
 
 eles = driver.get_elements_by_xpath("//*[@href]")
