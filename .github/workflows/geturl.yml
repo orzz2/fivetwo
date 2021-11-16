@@ -1,0 +1,48 @@
+## geturl.yml
+name: 'geturl'
+ 
+ ##定时
+on:
+  push:
+  schedule:
+    - cron: '0 23 * * *'
+ 
+ ##运行流程
+jobs:
+  bot:
+    runs-on: ubuntu-latest # 运行环境为最新版的Ubuntu
+    steps:
+      - name: 'Checkout codes' # 步骤一，获取仓库代码
+        uses: actions/checkout@v1
+      #- name: 'Run baiduPush.sh' # 步骤二，执行sh命令文件
+      #  run: npm install && npm run baiduPush # 运行命令。（注意，运行目录是仓库根目录）
+      
+      - name: 'get python chrome'#安装环境
+        ##安装依赖
+        run:sudo apt-get install libxss1 libappindicator1 libindicator7
+        ##下载chrome安装包
+        run: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        ##安装
+        run:sudo dpkg -i google-chrome*.deb
+        run:sudo apt-get install -f
+        ##安装ChromeDriver
+        run:sudo apt-get install xvfb
+        run:sudo apt-get install unzip
+        ##查看chrome版本号
+        run:google-chrome --version
+        下载 对应 安装包
+        run:wget -N http://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_linux64.zip
+        ##解压缩,建立软连接
+        run:unzip chromedriver_linux64.zip
+        run:sudo mv -f chromedriver /usr/local/share/chromedriver
+        run:sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+        run:sudo ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
+        ##安装python依赖
+        run:pip3 install selenium
+        run:pip3 install pyvirtualdisplay
+        ##安装chromedriver所需依赖
+        run:sudo apt -y install libgconf2-4
+        ##安装chromedriver
+        run: wget -N http://chromedriver.storage.googleapis.com//chromedriver_linux64.zip
+        ##查看chromedriver版本号
+        run:chromedriver --versin
