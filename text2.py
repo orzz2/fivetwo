@@ -44,6 +44,6 @@ browser.get('http://www.baidu.com')
 # for entry in browser.get_log('performance'):
 #     print(entry)
  
-  
+print('-------------------开始print了！-----------------------')  
 print(browser.title)
 print('无头浏览器启动成功')
