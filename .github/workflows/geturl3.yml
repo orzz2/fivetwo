@@ -15,11 +15,17 @@ jobs:
         run: |
           sudo apt-get install libxss1 libappindicator1 libindicator7
           wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb ##下载chrome安装包
+      - name: 'Run baiduPush.sh2' # 步骤二，执行sh命令文件
+        run: |
           sudo dpkg -i google-chrome*.deb ##安装
           sudo apt-get install -f
+      - name: 'Run baiduPush.sh3' # 步骤二，执行sh命令文件
+        run: |
           ##安装ChromeDriver
           sudo apt-get install xvfb
           sudo apt-get install unzip
+      - name: 'Run baiduPush.sh4' # 步骤二，执行sh命令文件
+        run: |
           ##查看chrome版本号
           google-chrome --version
           下载 对应 安装包
